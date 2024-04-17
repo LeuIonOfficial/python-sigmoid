@@ -42,7 +42,7 @@ print(obj)
 obj.setdefault('city', 'New York')
 # CODUL TĂU VINE MAI SUS:
 
-# Afișați toate cheile din dicționar 
+# Afișați toate cheile din dicționar
 
 # CODUL TĂU VINE MAI JOS:
 print(obj.keys())
@@ -69,7 +69,7 @@ print(len(obj.items()))
 # Extrageți valoarea unei chei inexistente fără a genera o eroare
 
 # CODUL TĂU VINE MAI JOS:
-print(obj.get('inexistent')) 
+print(obj.get('inexistent'))
 # CODUL TĂU VINE MAI SUS:
 
 # Acum actualizați dicționarul cu un alt dicționar, folosind metoda update()

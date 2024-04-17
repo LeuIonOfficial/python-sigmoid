@@ -3,7 +3,7 @@
 # Creați un set gol numit `numbers_set`
 
 # CODUL TĂU VINE MAI JOS:
-numbers_set = set() 
+numbers_set = set()
 # CODUL TĂU VINE MAI SUS:
 
 # Acum adăugați numerele de la 1 la 5 în setul `numbers_set`
@@ -28,7 +28,7 @@ numbers_set.add(6)
 # Acum adaugă numerele de la 1 la 5 în setul `numbers_set` folosind metoda update()
 
 # CODUL TĂU VINE MAI JOS:
-numbers_set.update({1,2,3,4,5})
+numbers_set.update({1, 2, 3, 4, 5})
 # CODUL TĂU VINE MAI SUS:
 
 # Extrageți numărul 3 din setul `numbers_set`
@@ -52,19 +52,19 @@ print(3 in numbers_set)
 # Verificați elementele comune din setul `numbers_set` și setul {4, 5, 6, 7}
 
 # CODUL TĂU VINE MAI JOS:
-print(numbers_set.intersection({4,5,6,7}))
+print(numbers_set.intersection({4, 5, 6, 7}))
 # CODUL TĂU VINE MAI SUS:
 
 # Verificați elementele diferite din setul `numbers_set` și setul {4, 5, 6, 7}
 
 # CODUL TĂU VINE MAI JOS:
-print(numbers_set.difference({4,5,6,7}))
+print(numbers_set.difference({4, 5, 6, 7}))
 # CODUL TĂU VINE MAI SUS:
 
 # Verificați dacă setul `numbers_set` este un subset al setului {1, 2, 3, 4, 5, 6, 7}
 
 # CODUL TĂU VINE MAI JOS:
-highest_set = {1,2,3,4,5,6,7}
+highest_set = {1, 2, 3, 4, 5, 6, 7}
 print(numbers_set.issubset(highest_set))
 # CODUL TĂU VINE MAI SUS:
 
@@ -105,3 +105,20 @@ print(numbers_set)
 # CODUL TĂU VINE MAI SUS:
 
 # Asta a fost tot pentru a doua ta sarcină legată de seturi
+
+
+def test_args(*args: str) -> None:
+    print(args)
+    print(type(args))
+
+
+test_args("1", "2", "3")
+
+
+def test_kwargs(*args, **kwargs):
+    print(args)
+    print(kwargs)
+    print(type(kwargs))
+
+
+test_kwargs(1, 2, 3, 4, 5, a=1, b=2, c=3)
