@@ -1,4 +1,5 @@
 # Aceasta este tema pentru lecția 8 legată de loops
+import random
 
 # Creați o listă de numere de la 1 la 10 folosind un for loop și funcția range().
 
@@ -112,24 +113,33 @@ print([num for num in range(1, 100) if (num ** 0.5).is_integer()])
 # Folosind un buclă for , printează tabla înmulțirii pentru numărul 7.
 
 # CODUL TĂU VINE MAI JOS:
-
+print([num*7 for num in range(1,10)])
 # CODUL TĂU VINE MAI SUS:
 
 # Creează o listă de liste, unde fiecare sub-listă conține perechi (i, j) pentru i și j de la 1 la 5. Printează această listă de perechi.
 
 # CODUL TĂU VINE MAI JOS:
+random_list = []
 
+while len(random_list) < 10:
+    i = random.randint(1,5)
+    j = random.randint(1,5)
+    random_list.append([i, j])
+
+print(random_list)
 # CODUL TĂU VINE MAI SUS:
 
 # Parcurge lista de la punctul anterior și printează doar perechile unde i < j .
 
 # CODUL TĂU VINE MAI JOS:
-
+print([element for element in random_list if element[0] < element[1]])
 # CODUL TĂU VINE MAI SUS:
 
 # Folosind un buclă while , caută și printează prima valoare care este mai mare decât 10 dintr-o listă cu numere random creată de tine. Dacă nu există, printează "Nu există valori mai mari decât 10".
 
 # CODUL TĂU VINE MAI JOS:
+
+new_random_list = [random.randint(0, 12) for _ in range(10)]
 
 # CODUL TĂU VINE MAI SUS:
 
