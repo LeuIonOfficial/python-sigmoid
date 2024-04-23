@@ -138,9 +138,23 @@ print([element for element in random_list if element[0] < element[1]])
 # Folosind un buclă while , caută și printează prima valoare care este mai mare decât 10 dintr-o listă cu numere random creată de tine. Dacă nu există, printează "Nu există valori mai mari decât 10".
 
 # CODUL TĂU VINE MAI JOS:
-
 new_random_list = [random.randint(0, 12) for _ in range(10)]
+is_greater = False
+another_number = new_random_list[0]
+loop = 0
 
+while loop < len(new_random_list):
+    print(loop)
+    if another_number > 10:
+        is_greater = True
+        break
+    another_number = new_random_list[loop]
+    loop = loop + 1
+
+if not is_greater:
+    print("Nu există valori mai mari decât 10")
+else:
+    print(another_number)
 # CODUL TĂU VINE MAI SUS:
 
 # Folosind loop-uri Creează un pătrat de stele ( * ) folosind bucle încadrate. Dimensiunea pătratului va fi citită de la utilizator.
@@ -152,7 +166,9 @@ new_random_list = [random.randint(0, 12) for _ in range(10)]
 # *****
 
 # CODUL TĂU VINE MAI JOS:
-
+dimensiune_patrat = int(input("Indica dimensiunea patratului:"))
+for i in range(dimensiune_patrat):
+    print("*" * dimensiune_patrat)
 # CODUL TĂU VINE MAI SUS:
 
 # Folosind for sau while loops realizați afișările de mai jos
@@ -166,7 +182,10 @@ new_random_list = [random.randint(0, 12) for _ in range(10)]
 # 123456
 
 # CODUL TĂU VINE MAI JOS:
-
+for i in range(1,7):
+    for j in range(1,i+1):
+        print(j, end="")
+    print()
 # CODUL TĂU VINE MAI SUS:
 
 # Afișarea 2:
@@ -178,7 +197,10 @@ new_random_list = [random.randint(0, 12) for _ in range(10)]
 # 5
 
 # CODUL TĂU VINE MAI JOS:
-
+for i in range(5,0, -1):
+    for j in range(1, i+1, 1):
+        print(j, end="")
+    print()
 # CODUL TĂU VINE MAI SUS:
 
 # Afișarea 3:
@@ -192,7 +214,10 @@ new_random_list = [random.randint(0, 12) for _ in range(10)]
 # g
 
 # CODUL TĂU VINE MAI JOS:
-
+list_of_words = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+for i in range(len(list_of_words)):
+    print("".join(list_of_words))
+    list_of_words.pop()
 # CODUL TĂU VINE MAI SUS:
 
 # Afișarea 4:
@@ -207,6 +232,14 @@ new_random_list = [random.randint(0, 12) for _ in range(10)]
 # -+-+-+-+-+-+-+-+
 
 # CODUL TĂU VINE MAI JOS:
+starts_with = '+-'
+
+for i in range(1, 9):
+    print(starts_with * 16)
+    if starts_with == "+-":
+        starts_with = "-+"
+    else:
+        starts_with = "+-"
 
 # CODUL TĂU VINE MAI SUS:
 
@@ -223,6 +256,17 @@ new_random_list = [random.randint(0, 12) for _ in range(10)]
 # 243
 
 # CODUL TĂU VINE MAI JOS:
+lista_de_numere = [3 ** i for i in range(1,6)]
+print(lista_de_numere)
+
+for i in range(len(lista_de_numere)):
+    for j in range(0, i+1):
+        print(lista_de_numere[j], end=" ")
+    print()
+
+while lista_de_numere:
+    print(" ".join([str(num) for num in lista_de_numere]))
+    lista_de_numere.pop(0)
 
 # CODUL TĂU VINE MAI SUS:
 
