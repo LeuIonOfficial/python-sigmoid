@@ -13,9 +13,12 @@ Task: Creați o funcție cu numele `task_1` care poate primi un număr variabil 
 Exemplu: task_1(1, 2, 3) ➞ 6
 """
 
+
 # CODUL TĂU VINE MAI JOS:
 def task_1(*args):
     return sum(args)
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -28,9 +31,12 @@ Task: Creați o funcție cu numele `task_2` care primește un număr variabil de
 Exemplu: task_2(1, 2, 'a', 'b') ➞ [1, 2]
 """
 
+
 # CODUL TĂU VINE MAI JOS:
 def task_2(*args):
     return [i for i in args if isinstance(i, int)]
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -42,12 +48,15 @@ Task: Creați o funcție cu numele `task_3` care poate primi un număr variabil 
 Exemplu: task_3(1, 4, 5) ➞ 20
 """
 
+
 # CODUL TĂU VINE MAI JOS:
 def task_3(*args):
     temp = args[0]
     for i in range(1, len(args)):
         temp = temp * args[i]
     return temp
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -59,9 +68,12 @@ Task: Creați o funcție cu numele `task_4` care primește un număr arbitrar de
 Exemplu: task_4(a=1, b=2, c=3) ➞ 'a 1 b 2 c 3'
 """
 
+
 # CODUL TĂU VINE MAI JOS:
 def task_4(**kwargs):
     return " ".join([f"{key} {value}" for key, value in kwargs.items()])
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -76,13 +88,16 @@ Exemplu: task_6(3, 1, 2, a=10, b=20, c='a') ➞ [1, 2, 3], ['c']
 Exemplu: task_6(3, 1, 2, a=10, b=20, c='a', d='b') ➞ [1, 2, 3], ['c', 'd']
 """
 
+
 # CODUL TĂU VINE MAI JOS:
 def task_5(*args, **kwargs):
     numbers = [i for i in args]
-    values =  [key for key, value in kwargs.items() if isinstance(value, str)]
+    values = [key for key, value in kwargs.items() if isinstance(value, str)]
     numbers.sort()
     values.sort()
     return numbers, values
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -94,9 +109,12 @@ Task: Creați o funcție cu numele `task_6` care primește un număr variabil de
 Exemplu: task_6(a=1, b=2, c=3) ➞ {'a': 1, 'b': 2, 'c': 3}
 """
 
+
 # CODUL TĂU VINE MAI JOS:
 def task_6(**kwargs):
     return kwargs
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -109,9 +127,12 @@ Cheia `str` va avea o listă cu toate string-urile primite ca argumente, iar che
 Exemplu: task_7(1, 'a', 2, 'b') ➞ {'str': ['a', 'b'], 'int': [1, 2]}
 """
 
+
 # CODUL TĂU VINE MAI JOS:
 def task_7(*args):
     return {'str': [i for i in args if isinstance(i, str)], 'int': [i for i in args if isinstance(i, int)]}
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -124,6 +145,7 @@ Cheia `palindrom` va avea o listă cu toate argumentele care sunt palindroame, i
 Exemplu: task_8('madam', 'hello', 'level', 'world') ➞ {'palindrom': ['madam', 'level'], 'non_palindrom': ['hello', 'world']}
 """
 
+
 # CODUL TĂU VINE MAI JOS:
 def task_8(*args):
     rezult = {'palindrom': [], 'non_palindrom': []}
@@ -133,6 +155,8 @@ def task_8(*args):
         else:
             rezult['non_palindrom'].append(i)
     return rezult
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -145,9 +169,11 @@ Funcția va returna toate argumentele care sunt multipli ai lui `number`.
 Exemplu: task_9(1, 2, 3, 4, 5, number=2) ➞ [2, 4]
 """
 
+
 # CODUL TĂU VINE MAI JOS:
 def task_9(*args, **kwargs):
     return [i for i in args if i % kwargs['number'] == 0]
+
 
 # CODUL TĂU VINE MAI SUS:
 
@@ -161,9 +187,12 @@ Funcția va returna toate argumentele care sunt divizibile cu `number`.
 Exemplu: task_10(1, 2, 3, 4, 5, number=2) ➞ [2, 4]
 """
 
+
 # CODUL TĂU VINE MAI JOS:
 def task_10(*args, **kwargs):
     return [i for i in args if kwargs['number'] % i == 0]
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -177,9 +206,18 @@ Exemplu: task_11(1, 1, 2, 3, 5, 8) ➞ True
 Exemplu: task_11(1, 1, 2, 3, 5, 9) ➞ False
 """
 
+
 # CODUL TĂU VINE MAI JOS:
-def task_11():
-    pass
+def task_11(*args):
+    if len(args) < 2:
+        return False
+
+    for i in range(2, len(args)):
+        if args[i] != args[i - 1] + args[i - 2]:
+            return False
+    return True
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -193,9 +231,19 @@ Exemplu: task_12(2, 3, 5, 7) ➞ True
 Exemplu: task_12(1, 2, 3, 4) ➞ False
 """
 
+
 # CODUL TĂU VINE MAI JOS:
-def task_12():
-    pass
+def task_12(*args):
+    for i in args:
+        if i > 1:
+            for j in range(2, i):
+                if i % j == 0:
+                    return False
+        else:
+            return False
+    return True
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -209,9 +257,19 @@ Exemplu: task_13('listen', 'silent') ➞ True
 Exemplu: task_13('hello', 'world') ➞ False
 """
 
+
 # CODUL TĂU VINE MAI JOS:
-def task_13():
-    pass
+def task_13(*args):
+    regex = [i for i in args[0]]
+    for i in args:
+        for j in i:
+            if j in regex:
+                continue
+            else:
+                return False
+    return True
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -224,10 +282,14 @@ Funcția va returna o listă cu toate argumentele care conțin `sub_string`.
 Exemplu: task_14('home', 'same', 'meme', sub_string="me") ➞ ['home', 'meme', 'same']
 """
 
+
 # CODUL TĂU VINE MAI JOS:
-def task_14():
-    pass
+def task_14(*args, **kwargs):
+    return [i for i in args if kwargs['sub_string'] in i]
+
+
 # CODUL TĂU VINE MAI SUS:
+
 
 # VERIFICATION PROCESS
 print(session.check_task_14(task_14))
@@ -240,9 +302,21 @@ Cheia `contains` va avea o listă cu toate argumentele care conțin `sub_string`
 Exemplu: task_15('home', 'same', 'meme', sub_string = 'me') ➞ {'contains': ['home', 'same', 'meme'], 'not_contains': []}
 """
 
+
 # CODUL TĂU VINE MAI JOS:
-def task_15():
-    pass
+def task_15(*args, **kwargs):
+    result = {
+        'contains': [],
+        'not_contains': []
+    }
+    for i in args:
+        if kwargs["sub_string"] in i:
+            result["contains"].append(i)
+        else:
+            result["not_contains"].append(i)
+    return result
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -259,9 +333,22 @@ Exemplu: task_16(2, 3, 4, 5, operation='mul') ➞ 120
 Exemplu: task_16(2, 3, 4, 5, operation='div') ➞ 0.008333333333333333
 """
 
+regex = {
+    "add": lambda x, y: x + y,
+    "sub": lambda x, y: x - y,
+    "mul": lambda x, y: x * y,
+    "div": lambda x, y: x / y,
+}
+
+
 # CODUL TĂU VINE MAI JOS:
-def task_16():
-    pass
+def task_16(*args, **kwargs):
+    temp = args[0]
+    for i in args[1:]:
+        temp = regex[kwargs["operation"]](temp, i)
+    return temp
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -279,9 +366,16 @@ Exemplu: task_17(2, div=[3, 4, 5]) ➞ 0.008333333333333333
 Exemplu: task_17(2, add=[3, 4, 5], sub=[1, 2]) ➞ 11
 """
 
+
 # CODUL TĂU VINE MAI JOS:
-def task_17():
-    pass
+def task_17(number, **kwargs):
+    temp = number
+    for key, value in kwargs.items():
+        for i in value:
+            temp = regex[key](temp, i)
+    return temp
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -293,9 +387,19 @@ Task: Creați o funcție cu numele `task_18` care primește un număr variabil d
 Exemplu: task_18('hello', 'world') ➞ {'h': 1, 'e': 1, 'l': 3, 'o': 2, 'w': 1, 'r': 1, 'd': 1}
 """
 
+
 # CODUL TĂU VINE MAI JOS:
-def task_18():
-    pass
+def task_18(*args):
+    result = {}
+    for i in args:
+        for j in i:
+            if j in result:
+                result[j] += 1
+            else:
+                result[j] = 1
+    return result
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -307,9 +411,27 @@ Task: Creați o funcție cu numele `task_19` care primește un număr variabil d
 Exemplu: task_19(1, 2, 3, 4, 5, 6, 7, 8, 9) ➞ {2: 1, 3: 1, 5: 1, 7: 1}
 """
 
+
 # CODUL TĂU VINE MAI JOS:
-def task_19():
-    pass
+def task_19(*args):
+    def is_prime(n):
+        if n <= 1:
+            return False
+        for i in range(2, n):
+            if n % i == 0:
+                return False
+        return True
+
+    result = {}
+    for num in args:
+        if is_prime(num):
+            if num in result:
+                result[num] += 1
+            else:
+                result[num] = 1
+    return result
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -322,13 +444,22 @@ Exemplu: task_20('hello', 'world') ➞ {5: 2}
 Exemplu: task_20('hello', 'world', 'python') ➞ {5: 2, 6: 1}
 """
 
+
 # CODUL TĂU VINE MAI JOS:
-def task_20():
-    pass
+def task_20(*args):
+    result = {}
+    for i in args:
+        temp = len(i)
+        if temp in result:
+            result[temp] += 1
+        else:
+            result[temp] = 1
+    return result
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
 print(session.check_task_20(task_20))
 print(session.get_completion_percentage())
 # VERIFICATION PROCESS
-
