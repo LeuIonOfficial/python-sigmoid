@@ -61,16 +61,16 @@ Totodată aceasta va avea o metodă numită `upgrade_battery` care va primi un p
 
 # CODUL TĂU VINE MAI JOS:
 class Telefon(Produs):
-    def __init__(self, bateria_mAh, memorie_GB, numele, pretul, anul_producerii):
+    def __init__(self, numele, pretul, anul_producerii, baterie_mAh, memorie_GB):
         super().__init__(numele, pretul, anul_producerii)
-        self.bateria_mAh = bateria_mAh
+        self.baterie_mAh = baterie_mAh
         self.memorie_GB = memorie_GB
 
     def upgrade_memory(self, new_memory):
         self.memorie_GB = new_memory
 
     def upgrade_battery(self, new_battery):
-        self.bateria_mAh = new_battery
+        self.baterie_mAh = new_battery
 
 
 # CODUL TĂU VINE MAI SUS:
@@ -89,7 +89,7 @@ Totodată aceasta va avea o metodă numită `upgrade_os` care va primi un parame
 
 # CODUL TĂU VINE MAI JOS:
 class Laptop(Produs):
-    def __init__(self, sistem_de_operare, procesor, numele, pretul, anul_producerii):
+    def __init__(self, numele, pretul, anul_producerii, sistem_de_operare, procesor):
         super().__init__(numele, pretul, anul_producerii)
         self.sistem_de_operare = sistem_de_operare
         self.procesor = procesor
@@ -138,7 +138,7 @@ print(session.check_task_4(Trotineta, Produs))
 """
 3 DARWIN a mai lăsat o mică notiță după ei, au menționat că mulți cumpărători sunt interesați de produsele apple și adesea acestea le combină între ele.
 
-Avem nevoie de o clasă nouă care să se numească `AppleProduct` care va moșteni clasa `Produs` și va avea un parametru în plus numit `culoare` și `produs_conectat` 
+Avem nevoie de o clasă nouă care să se numească `AppleProduct` care va moșteni clasa `Produs` și va avea un parametru în plus numit `culoare` și `produs_conectat`
 parametrul `produs_conectat` va avea valoarea "nimic" la crearea unui produs astfel încât nu va fi necesar de menționat la crearea unui obiect nou
 De asemenea va avea o metodă numită `combine_products` care va primi un parametru `product` ce va reprezenta un alt obiect de tip `AppleProduct` care va fi salvat în parametrul `produs_conectat`
 Există o singură condiție, produsul conectat trebuie să fie de tip `AppleProduct` iar culoarea acestuia trebuie să fie aceeași cu a produsului curent.
@@ -157,13 +157,13 @@ print(iphone.produs_conectat.numele) # Va returna numele produsului conectat
 
 # CODUL TĂU VINE MAI JOS:
 class AppleProduct(Produs):
-    def __init__(self, numele, pretul, anul_producerii, culoare):
+    def __init__(self, numele, pretul, anul_producerii, culoare, produs_conectat="nimic"):
         super().__init__(numele, pretul, anul_producerii)
         self.culoare = culoare
-        self.produs_conectat = None
+        self.produs_conectat = produs_conectat
 
     def combine_products(self, product):
-        if self.culoare == product.culoare:
+        if self.culoare == product.culoare and isinstance(product, AppleProduct):
             self.produs_conectat = product
             self.culoare = product.culoare
             return f"Produsul a fost conectat cu succes"
@@ -194,8 +194,16 @@ print(pixel.produs_conectat.numele) # Va returna numele produsului conectat
 
 
 # CODUL TĂU VINE MAI JOS:
-class GoogleProduct():
-    pass
+class GoogleProduct(AppleProduct):
+    def __init__(self, numele, pretul, anul_producerii, culoare, produs_conectat="nimic"):
+        super().__init__(numele, pretul, anul_producerii, culoare, produs_conectat)
+
+    def combine_products(self, product):
+        if isinstance(product, GoogleProduct) and self.culoare != product.culoare:
+            self.produs_conectat = product
+            return f"Produsul a fost conectat cu succes"
+        else:
+            return f"Produsul nu poate fi conectat deoarece culorile nu coincid"
 
 
 # CODUL TĂU VINE MAI SUS:
@@ -221,7 +229,13 @@ print(magazin.returneaza_produs(iphone)) # Va returna textul "Produsul Iphone a 
 
 # CODUL TĂU VINE MAI JOS:
 class Magazin:
-    pass
+    @staticmethod
+    def vinde_produs(produs: Produs):
+        return f"Produsul {produs.numele} a fost vândut cu succes"
+
+    @staticmethod
+    def returneaza_produs(produs: Produs):
+        return f"Produsul {produs.numele} a fost returnat cu succes"
 
 
 # CODUL TĂU VINE MAI SUS:
