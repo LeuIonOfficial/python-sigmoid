@@ -12,7 +12,7 @@ session = Lesson15()
 
 """
 ISTORIA DIN SPATE
-După toată munca depusă pentru proiectul de la DARWIN și TechSolutions, ai primit o ofertă de la cei de la Microsoft, 
+După toată munca depusă pentru proiectul de la DARWIN și TechSolutions, ai primit o ofertă de la cei de la Microsoft,
 aceștia lucrează la crearea unui algoritm care le va permite procesarea a unor cantități mari de date.
 """
 
@@ -31,7 +31,23 @@ Clasa va primi ca parametru o listă de numere integer.
 
 # CODUL TĂU VINE MAI JOS:
 class DataContainer:
-    pass
+    def __init__(self, numere = []) -> None:
+        self.numere = numere
+
+    def __str__(self):
+        return str(self.numere)
+
+    def __len__(self):
+        return len(self.numere)
+
+    def __getitem__(self, index):
+        return self.numere[index]
+
+    def __setitem__(self, index, value):
+        self.numere[index] = value
+
+    def __add__(self, other):
+        return DataContainer(self.numere + other.numere)
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -46,11 +62,22 @@ Ambele clase vor avea metoda `calculate` care va returna suma sau produsul eleme
 """
 
 # CODUL TĂU VINE MAI JOS:
-class SumaContainer( ):
-    pass
-    
-class ProdusContainer( ):
-    pass
+class SumaContainer(DataContainer):
+    def __init__(self, numere=[]) -> None:
+        super().__init__(numere)
+
+    def calculate(self):
+        return sum(self.numere)
+
+class ProdusContainer(DataContainer):
+    def __init__(self, numere=[]) -> None:
+        super().__init__(numere)
+
+    def calculate(self):
+        produs = 1
+        for numar in self.numere:
+            produs *= numar
+        return produs
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -67,7 +94,14 @@ Creează o clasă `DataAnalysis` care va primi ca input o listă de obiecte de t
 
 # CODUL TĂU VINE MAI JOS:
 class DataAnalysis:
-    pass
+    def __init__(self, containers = []):
+        self.containers = containers
+
+    def add_container(self, container):
+        self.containers.append(container)
+
+    def __call__(self):
+        return [max(container.numere) for container in self.containers]
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
@@ -87,7 +121,43 @@ Creează o clasă `DataStatistics` care va primi ca input o listă de obiecte de
 
 # CODUL TĂU VINE MAI JOS:
 class DataStatistics:
-    pass
+    def __init__(self, containers = []) -> None:
+        self.containers = containers
+
+    def add_container(self, container):
+        self.containers.append(container)
+
+    def mean(self):
+        total = 0
+        count = 0
+        for container in self.containers:
+            total += sum(container.numere)
+            count += len(container)
+        return total / count
+
+    def median(self):
+        numere = []
+        for container in self.containers:
+            numere += container.numere
+        numere.sort()
+        n = len(numere)
+        if n % 2 == 0:
+            return (numere[n//2 - 1] + numere[n//2]) / 2
+        return numere[n//2]
+
+    def min(self):
+        numere = []
+        for container in self.containers:
+            numere += container.numere
+        return min(numere)
+
+
+    def sum(self):
+        total = 0
+        for container in self.containers:
+            total += sum(container.numere)
+        return total
+
 
 # CODUL TĂU VINE MAI SUS:
 
@@ -109,7 +179,38 @@ Creează o clasă `DataFilter` care va primi ca input o listă de obiecte de tip
 
 # CODUL TĂU VINE MAI JOS:
 class DataFilter:
-    pass
+    def __init__(self, containers = []) -> None:
+        self.containers = containers
+
+    def add_container(self, container):
+        self.containers.append(container)
+
+    def filter_zeros(self):
+        numere = []
+        for container in self.containers:
+            numere += container.numere
+        return [numar for numar in numere if numar != 0]
+
+    def filter_negatives(self):
+        numere = []
+        for container in self.containers:
+            numere += container.numere
+        return [numar for numar in numere if numar < 0]
+
+    def filter_positives(self):
+        numere = []
+        for container in self.containers:
+            numere += container.numere
+        return [numar for numar in numere if numar >= 0]
+
+    def filter_under_mean(self):
+        numere = []
+        for container in self.containers:
+            numere += container.numere
+        mean = DataStatistics(self.containers).mean()
+        return [numar for numar in numere if numar > mean]
+
+
 # CODUL TĂU VINE MAI SUS:
 
 # VERIFICATION PROCESS
