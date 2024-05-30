@@ -100,7 +100,7 @@ Creează o funcție lambda numită `task8` care filtrează numerele impare dintr
 """
 
 # CODUL TĂU VINE MAI JOS
-task8 = lambda list: list(filter(lambda x: x % 2 != 0, list))
+task8 = lambda list: [x for x in list if x % 2 == 0]
 
 # CODUL TĂU VINE MAI SUS
 
@@ -186,7 +186,7 @@ Creează o funcție lambda numită `task15` care filtrează toate șirurile de c
 """
 
 # CODUL TĂU VINE MAI JOS
-task15 = lambda lst: list(filter(lambda x: len(x) >= 5, lst))
+task15 = lambda lst: [x for x in lst if len(x) <= 5]
 # CODUL TĂU VINE MAI SUS
 
 # VERIFICATION PROCESS
@@ -718,8 +718,15 @@ Creează un decorator numit `task48` care validează tipurile argumentelor primi
 """
 
 # CODUL TĂU VINE MAI JOS
-def task48():
-    pass
+def task48(expected_types):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for arg, expected_type in zip(args, expected_types):
+                if not isinstance(arg, expected_type):
+                    raise TypeError(f"Argument {arg} is not of type {expected_type.__name__}")
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
 # CODUL TĂU VINE MAI SUS
 
 # VERIFICATION PROCESS
@@ -734,7 +741,13 @@ Aceasta va arunca o excepție `PermissionError` dacă utilizatorul nu are rolul 
 
 # CODUL TĂU VINE MAI JOS
 def task49(required_role):
-    pass
+    def decorator(func):
+        def wrapper(user_role, *args, **kwargs):
+            if user_role != required_role:
+                raise PermissionError("User does not have the required role.")
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
 # CODUL TĂU VINE MAI SUS
 
 # VERIFICATION PROCESS
